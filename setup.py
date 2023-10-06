@@ -22,6 +22,22 @@ from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtensio
 from scripts.utils import get_nvidia_cc
 
 
+install_requires = [
+    'torch',
+    'deepspeed',
+    'dm-tree',
+    'ml-collections',
+    'numpy',
+    'PyYAML',
+    'requests',
+    'scipy',
+    'tqdm',
+    'typing-extensions',
+    'pytorch_lightning',
+    'wandb',
+    'modelcif'
+]
+
 version_dependent_macros = [
     '-DVERSION_GE_1_1',
     '-DVERSION_GE_1_3',
