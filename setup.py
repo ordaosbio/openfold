@@ -67,7 +67,7 @@ def get_cuda_bare_metal_version(cuda_dir):
         
         return raw_output, bare_metal_major, bare_metal_minor
 
-compute_capabilities = set([    
+compute_capabilities = set([
     (5, 2), # Titan X
     (6, 1), # GeForce 1000-series
 ])
@@ -92,6 +92,8 @@ for major, minor in list(compute_capabilities):
     ])
 
 extra_cuda_flags += cc_flag
+
+cc_flag = ['-gencode', 'arch=compute_70,code=sm_70']
 
 if bare_metal_major != -1:
     modules = [CUDAExtension(
@@ -129,10 +131,10 @@ else:
 
 setup(
     name='openfold',
-    version='1.0.1',
+    version='2.2.0',
     description='A PyTorch reimplementation of DeepMind\'s AlphaFold 2',
-    author='Gustaf Ahdritz & DeepMind',
-    author_email='gahdritz@gmail.com',
+    author='OpenFold Team',
+    author_email='jennifer.wei@omsf.io',
     license='Apache License, Version 2.0',
     url='https://github.com/aqlaboratory/openfold',
     packages=find_packages(exclude=["tests", "scripts"]),
@@ -146,7 +148,7 @@ setup(
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 3.9,'
+        'Programming Language :: Python :: 3.10,'
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
 )
